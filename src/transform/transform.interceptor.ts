@@ -9,7 +9,7 @@ export class TransformInterceptor<T> implements NestInterceptor<T, Response<T>> 
   intercept(context: ExecutionContext, next: CallHandler<T>) {
     return next.handle().pipe(
       map((data) => ({
-        retcode: 0,
+        code: '00000',
         message: 'OK',
         data
       }))
