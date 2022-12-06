@@ -5,7 +5,7 @@ import { UpdateUserDto } from './dto/update-user.dto'
 import { ApiOperation, ApiTags } from '@nestjs/swagger'
 
 // swagger 标签分类
-@ApiTags('用户')
+@ApiTags('User')
 // 使用装饰器修饰类(路由)
 @Controller('users')
 export class UsersController {
@@ -14,7 +14,7 @@ export class UsersController {
   // 使用装饰器修饰方法，表示使用post 请求(路由)
   @Post('/create')
   // swagger 接口描述
-  @ApiOperation({ summary: '添加用户' })
+  @ApiOperation({ summary: 'Adding Users' })
   // @Body() 使用装饰器修饰 http 请求体参数
   // : CreateUserDto 使用 TS 进行参数类型约束
   create(@Body() createUserDto: CreateUserDto) {
