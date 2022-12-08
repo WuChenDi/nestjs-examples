@@ -1,13 +1,19 @@
 import { INestApplication } from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'
 import { NestExpressApplication } from '@nestjs/platform-express'
-import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger'
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
 import { AppModule } from './app.module'
 import { AllExceptionFilter, HttpExceptionFilter } from './error'
 import { ReportLogger } from './log/ReportLogger'
 import { LogInterceptor } from './log/log.interceptor'
 import { TransformInterceptor } from './transform/transform.interceptor'
 
+declare const module: any
+
+/**
+ * Generate swagger documents
+ * @param app
+ */
 const setupSwagger = (app: INestApplication) => {
   const config = new DocumentBuilder()
     .addBearerAuth()
@@ -38,14 +44,18 @@ async function bootstrap() {
 
   app.setGlobalPrefix('api')
   app.useGlobalFilters(new HttpExceptionFilter(), new AllExceptionFilter())
-
   app.useGlobalInterceptors(new LogInterceptor(reportLogger), new TransformInterceptor())
 
   setupSwagger(app)
 
   await app.listen(3000, '0.0.0.0', async () => {
     console.log(`Application is running on: ${await app.getUrl()}`)
+    console.log(`Swagger is running on: ${await app.getUrl()}/docs`)
   })
+  if (module.hot) {
+    module.hot.accept()
+    module.hot.dispose(() => app.close())
+  }
 }
 
 bootstrap()
