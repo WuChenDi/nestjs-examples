@@ -49,8 +49,8 @@ async function bootstrap() {
   setupSwagger(app)
 
   await app.listen(3000, '0.0.0.0', async () => {
-    console.log(`Application is running on: ${await app.getUrl()}`)
-    console.log(`Swagger is running on: ${await app.getUrl()}/docs`)
+    console.log(`⚡️ Application is running on: ${await app.getUrl()}`)
+    console.log(`⚡️ Swagger is running on: ${await app.getUrl()}/docs`)
   })
   if (module.hot) {
     module.hot.accept()
