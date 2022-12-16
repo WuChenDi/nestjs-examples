@@ -10,7 +10,7 @@ interface Response<T> {
 export class TransformInterceptor<T> implements NestInterceptor<T, Response<T>> {
   intercept(context: ExecutionContext, next: CallHandler): Observable<Response<T>> {
     const req = context.switchToHttp().getRequest<Request>()
-    console.log(`请求参数：${JSON.stringify(req.body)}`)
+    console.log(`Request Parameters：${JSON.stringify(req.body)}`)
 
     return next.handle().pipe(
       map((data) => ({
