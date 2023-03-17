@@ -36,26 +36,26 @@ $ pnpm install
 
 ```bash
 # development
-$ pnpm start
+$ pnpm run start
 
 # watch mode
-$ pnpm start:dev
+$ pnpm run start:dev
 
 # production mode
-$ pnpm start:prod
+$ pnpm run start:prod
 ```
 
 ## Test
 
 ```bash
 # unit tests
-$ pnpm test
+$ pnpm run test
 
 # e2e tests
-$ pnpm test:e2e
+$ pnpm run test:e2e
 
 # test coverage
-$ pnpm test:cov
+$ pnpm run test:cov
 ```
 
 ## Support
