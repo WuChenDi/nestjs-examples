@@ -3,6 +3,6 @@ import { ReportLogger } from './ReportLogger'
 
 @Module({
   providers: [ReportLogger],
-  exports: [ReportLogger]
+  exports: [ReportLogger],
 })
 export class LogModule {}

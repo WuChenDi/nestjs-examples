@@ -25,8 +25,8 @@ const setupSwagger = (app: INestApplication) => {
   const document = SwaggerModule.createDocument(app, config)
   SwaggerModule.setup('docs', app, document, {
     swaggerOptions: {
-      persistAuthorization: true
-    }
+      persistAuthorization: true,
+    },
   })
 }
 
@@ -36,10 +36,10 @@ async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
     cors: {
       origin: ['http://localhost', 'http://localhost:3000'],
-      credentials: true
+      credentials: true,
     },
     bufferLogs: true,
-    logger: reportLogger
+    logger: reportLogger,
   })
 
   app.setGlobalPrefix('api')

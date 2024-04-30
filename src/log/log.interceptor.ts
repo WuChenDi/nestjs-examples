@@ -14,6 +14,10 @@ export class LogInterceptor implements NestInterceptor {
     const now = Date.now()
     return next
       .handle()
-      .pipe(tap(() => this.reportLogger.log(`${request.method} ${request.url} ${Date.now() - now}ms`)))
+      .pipe(
+        tap(() =>
+          this.reportLogger.log(`${request.method} ${request.url} ${Date.now() - now}ms`)
+        )
+      )
   }
 }
